@@ -13,11 +13,23 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
+      passwd: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      userName: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
     },
     {
       charset: "utf8",
       collate: "utf8_general_ci",
-      tableName: "users",
+      tableName: "member",
       paranoid: true,
     }
   );
