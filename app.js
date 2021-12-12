@@ -5,10 +5,14 @@ const logger = require("./middlewares/logger-mw");
 const method = require("./middlewares/method-mw");
 const session = require("./middlewares/session-mw");
 const local = require("./middlewares/local-mw");
+const { sequelize } = require("./models");
 const app = express();
 
 /********* Server Init *********/
 require("./modules/server-init")(app, process.env.PORT);
+
+/********* Sequelize Init *********/
+sequelize.sync();
 
 /******* Middleware Init *******/
 app.use(logger);
