@@ -17,4 +17,14 @@ router.get("/create", async (req, res, next) => {
   }
 });
 
+router.get("/update", async (req, res, next) => {
+  try {
+    // UPDATE member SET passwd: '4567' WHERE id=1;
+    await User.update({ passwd: "4567", userName: "임덕팔" }, { where: { id: 1 } });
+    res.send("수정되었습니다.");
+  } catch (err) {
+    next(createError(err));
+  }
+});
+
 module.exports = router;
