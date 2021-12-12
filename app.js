@@ -5,14 +5,14 @@ const logger = require("./middlewares/logger-mw");
 const method = require("./middlewares/method-mw");
 const session = require("./middlewares/session-mw");
 const local = require("./middlewares/local-mw");
-const { sequelize } = require("./models");
+const { sequelize } = require("./models"); // sequelize
 const app = express();
 
 /********* Server Init *********/
 require("./modules/server-init")(app, process.env.PORT);
 
 /********* Sequelize Init *********/
-sequelize.sync();
+sequelize.sync(); // sequelize
 
 /******* Middleware Init *******/
 app.use(logger);
@@ -37,6 +37,9 @@ app.use("/", express.static("./public"));
 app.use("/uploads", express.static("./storages"));
 
 /********* Router Init *********/
+const userRouter = require("./routes/user-router");
+
+app.use("/user", userRouter);
 
 /********** Error Init *********/
 const notFoundRouter = require("./routes/404-router");
